@@ -7,6 +7,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
 
@@ -35,6 +36,23 @@
             if-layers = <LOWER RAISE>;
             then-layer = <ADJUST>;
         };
+    };
+
+    // explanations of settings: https://zmk.dev/docs/config/encoders
+    // steps is number of physical pulses per rotation
+    // triggers is number of times bound action is run per rotation
+    left_encoder: encoder_left {
+        steps = <30>; // default is 80, datasheet says 15
+    };
+
+    right_encoder: encoder_right {
+        steps = <30>; // default is 80, datasheet says 15
+    };
+
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder &right_encoder>;
+        //triggers-per-rotation = <30>; // default is 20
     };
 
     behaviors {
