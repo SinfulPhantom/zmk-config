@@ -32,7 +32,6 @@
 
         default_layer {
             display-name = "default";
-    };
 
  /*
             *
